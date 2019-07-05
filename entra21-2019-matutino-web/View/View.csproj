@@ -112,6 +112,7 @@
     <Content Include="Views\Estoque\Cadastro.cshtml" />
     <Content Include="Views\Estoque\Editar.cshtml" />
     <Content Include="Views\Escola\Cadastro.cshtml" />
+    <Content Include="Views\Escola\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

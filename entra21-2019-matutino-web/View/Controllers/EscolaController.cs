@@ -15,9 +15,9 @@ namespace View.Controllers
         public ActionResult Index()
         {
             
-            //List<Estoque> estoques = repositorio.ObterTodos("");
+            List<Escola> escolas = repositorio.ObterTodos("");
 
-            //ViewBag.Estoques = estoques;
+            ViewBag.Escolas = escolas;
 
             return View();
         }
