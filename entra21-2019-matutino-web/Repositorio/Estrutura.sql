@@ -1,10 +1,17 @@
-﻿CREATE TABLE estoques (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(100),
-	valor DECIMAL(8,2),
-	quantidade INT
+﻿CREATE TABLE escola (
+id INT PRIMARY KEY IDENTITY(1,1),
+nome VARCHAR(50),
 );
 
-INSERT INTO estoques (nome, valor, quantidade)
-VALUES
-('Biela', 150, 20);
+CREATE TABLE alunos(
+id INT PRIMARY KEY IDENTITY(1,1),
+nome_alunos VARCHAR(50),
+cpf VARCHAR (14),
+nota DECIMAL (4,2)
+);
+
+INSERT INTO escola (nome)
+VALUES ('Higert');
+
+
+

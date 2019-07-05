@@ -96,6 +96,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ColaboradorController.cs" />
+    <Compile Include="Controllers\EscolaController.cs" />
     <Compile Include="Controllers\EstoqueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -110,6 +111,7 @@
     <Content Include="Views\Estoque\Index.cshtml" />
     <Content Include="Views\Estoque\Cadastro.cshtml" />
     <Content Include="Views\Estoque\Editar.cshtml" />
+    <Content Include="Views\Escola\Cadastro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
