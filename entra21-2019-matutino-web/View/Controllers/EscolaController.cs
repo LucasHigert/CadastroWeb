@@ -10,12 +10,12 @@ namespace View.Controllers
 {
     public class EscolaController : Controller
     {
-        EscolaRepositorio repositorio = new EscolaRepositorio();
         // GET: Escola
+        EscolaRepositorio repositorio = new EscolaRepositorio();
         public ActionResult Index()
         {
             
-            List<Escola> escolas = repositorio.ObterTodos("");
+           List<Escola> escolas = repositorio.ObterTodos("");
 
             ViewBag.Escolas = escolas;
 
