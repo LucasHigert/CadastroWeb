@@ -34,7 +34,7 @@ namespace Repositorio
             busca = $"%{busca}%";
             comando.Parameters.AddWithValue("@BUSCA", busca);
 
-            List<Escola>escolas = new List<Escola>();
+            List<Escola> escolas = new List<Escola>();
             DataTable tabela = new DataTable();
             tabela.Load(comando.ExecuteReader());
             comando.Connection.Close();
@@ -44,11 +44,54 @@ namespace Repositorio
                 DataRow linha = tabela.Rows[i];
                 Escola escola = new Escola();
 
-               escola.Id = Convert.ToInt32(linha["id"]);
-               escola.Nome = linha["nome"].ToString();
-               escolas.Add(escola);
+                escola.Id = Convert.ToInt32(linha["id"]);
+                escola.Nome = linha["nome"].ToString();
+                escolas.Add(escola);
             }
             return escolas;
+        }
+        public bool Apagar(int id)
+        {
+            SqlCommand comando = conexao.Conectar();
+            comando.CommandText = @"DELETE FROM escola WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+             int quantidadeAfetada = comando.ExecuteNonQuery();
+             comando.Connection.Close();
+            return quantidadeAfetada == 1;
+        }
+
+        public Escola ObterPeloId(int id)
+        {
+            SqlCommand comando = conexao.Conectar();
+            comando.CommandText = @"SELECT * FROM escola WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+
+            DataTable tabela = new DataTable();
+            tabela.Load(comando.ExecuteReader());
+
+            if (tabela.Rows.Count == 1)
+            {
+                DataRow linha = tabela.Rows[0];
+                Escola escola = new Escola();
+                escola.Id = Convert.ToInt32(linha["id"]);
+                escola.Nome = linha["nome"].ToString();
+                return escola;
+            }
+            return null;
+        }
+
+        public bool Atualizar(Escola escola)
+        {
+            SqlCommand comando = conexao.Conectar();
+            comando.CommandText = @"UPDATE escola SET
+nome = @NOME WHERE id = @ID";
+            comando.Parameters.AddWithValue("@NOME",
+                escola.Nome);
+            comando.Parameters.AddWithValue("@ID",
+                escola.Id);
+            int quantidadeAfetada = comando.ExecuteNonQuery();
+            comando.Connection.Close();
+            return quantidadeAfetada == 1;
         }
     }
 }

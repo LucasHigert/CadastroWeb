@@ -34,5 +34,31 @@ namespace View.Controllers
             int id = repositorio.Inserir(escola);
             return RedirectToAction("Index");
         }
+        public ActionResult Editar(int id)
+        {
+           Escola escola = repositorio.ObterPeloId(id);
+            ViewBag.Escola = escola;
+            return View();
+        }
+
+        public ActionResult Update(int id, string nome)
+        {
+            Escola escola = new Escola();
+            escola.Id = id;
+            escola.Nome = nome;
+            
+
+            bool alterou = repositorio.Atualizar(escola);
+            return RedirectToAction("Index");
+
+
+        }
+
+        public ActionResult Apagar(int id)
+        {
+            repositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
